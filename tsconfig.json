@@ -2,24 +2,49 @@
 /* To learn more about Angular compiler options: https://angular.dev/reference/configs/angular-compiler-options. */
 {
   "compileOnSave": false,
+  "preserveWhitespaces": false,
   "compilerOptions": {
-    "strict": true,
-    "noImplicitOverride": true,
-    "noPropertyAccessFromIndexSignature": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
-    "skipLibCheck": true,
-    "isolatedModules": true,
+    "declaration": false,
+    "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "importHelpers": true,
+    "pretty": false,
+    "removeComments": true,
+    "sourceMap": true,
     "target": "ES2022",
-    "module": "preserve"
-  },
-  "angularCompilerOptions": {
-    "enableI18nLegacyMessageIdFormat": false,
-    "strictInjectionParameters": true,
-    "strictInputAccessModifiers": true,
-    "strictTemplates": true
+    "module": "preserve",
+    "typeRoots": [
+      "./src/typings"
+    ],
+    "paths": {
+      "@angular/*": ["../node_modules/@angular/*"]
+    },
+    "types": [
+      "node",
+      "jquery",
+      "bootstrap",
+      "jqueryui",
+      "spectrum",
+      "Html2Canvas",
+      "bootstrap-select",
+      "eonasdan-bootstrap-datetimepicker",
+      "lodash",
+      "switchery",
+      "moment",
+      "detectizr",
+      "jquery.gwfselect",
+      "jquery.autoclumnlist",
+      "tinycolor",
+      "base64",
+      "prng4",
+      "rng",
+      "rsa",
+      "jsbn",
+      "jsencrypt"
+    ],
+    "noImplicitAny": true,
+
+    // MA never drop the below flag and replace it with index signatures. Index signatures causes type to be lost.
+    "suppressImplicitAnyIndexErrors": true,
   },
   "files": [],
   "references": [
@@ -29,5 +54,8 @@
     {
       "path": "./tsconfig.spec.json"
     }
+  ],
+  "exclude": [
+
   ]
 }
