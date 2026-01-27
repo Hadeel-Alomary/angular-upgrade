@@ -1,0 +1,18 @@
+//this file added for lint issue . 
+
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": ["tsconfig.json", "tsconfig.app.json"]
+  },
+  "plugins": ["@typescript-eslint"],
+  "extends": [
+    "plugin:@angular-eslint/recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "rules": {
+    "@typescript-eslint/no-explicit-any": "error",
+    "no-var": "error"
+  }
+}

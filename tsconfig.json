@@ -44,7 +44,7 @@
     "noImplicitAny": true,
 
     // MA never drop the below flag and replace it with index signatures. Index signatures causes type to be lost.
-    "suppressImplicitAnyIndexErrors": true,
+//    "suppressImplicitAnyIndexErrors": true,
   },
   "files": [],
   "references": [
