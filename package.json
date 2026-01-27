@@ -9,7 +9,7 @@
     "test": "ng test",
     "start_ar": "npm run lint && webpack --progress --watch --config ./webpack.dev.js --mode development",
     "lint": "ng lint",
-    "start_ar2": "webpack --progress --watch --config ./webpack.dev.js --mode development"
+    "start_ar2": "webpack serve --config ./webpack.dev.js --mode development"
   },
   "prettier": {
     "printWidth": 100,

@@ -99,7 +99,18 @@ const getDevelopmentConfig = (env) => {
       moduleIds: 'named' // human-readable module names in dev
     },
     // Webpack 5 no longer needs legacy node polyfills
-    node: false
+    node: false,
+    //TODO remove this devserver
+    devServer: {
+      static: {
+        directory: getOutputFolder(env, true), // your build output folder
+      },
+      compress: true,
+      port: 4200, // the port to open
+      open: true, // open browser automatically
+      hot: true,
+      historyApiFallback: true
+    }
   });
 
   return devConfig;
