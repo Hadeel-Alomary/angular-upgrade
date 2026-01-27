@@ -8,8 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "start_ar": "npm run lint && webpack --progress --watch --config ./webpack.dev.js --mode development",
-    "lint": "ng lint",
-    "start_ar2": "webpack --progress --watch --config ./webpack.dev.js --mode development"
+    "lint": "ng lint"
   },
   "prettier": {
     "printWidth": 100,
