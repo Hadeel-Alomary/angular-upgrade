@@ -105,9 +105,6 @@ module.exports = {
   },
 
   plugins: [
-    new DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
-    }),
     new IgnorePlugin({ resourceRegExp: /^\.\/locale$/, contextRegExp: /moment$/ }),
     new CopyWebpackPlugin({
       patterns: [

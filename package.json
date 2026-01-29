@@ -8,6 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "start_ar": "npm run lint && webpack --progress --watch --config ./webpack.dev.js --env locale=ar --mode development",
+    "dist_ar": "webpack --progress --config ./webpack.prod.js --env locale=ar --mode production",
     "lint": "ng lint"
   },
   "prettier": {
