@@ -40,7 +40,7 @@ const bundledJsFiles = [
   './src/static-libraries/vendor/jsbn/jsbn.js',
   './src/static-libraries/vendor/jsencrypt/jsencrypt.js'
 ];
-
+const vendorScripts = bundledJsFiles.map(file => `script-loader!${file}`);
 module.exports = {
   resolve: {
     extensions: ['.ts', '.js'],
@@ -54,11 +54,11 @@ module.exports = {
   entry: {
     main: ['./src/main.ts'],
     polyfills: ['./src/polyfills.ts'],
-    styles: bundledCssFiles
+    styles: bundledCssFiles,
+    vendor: vendorScripts, // all bundled JS in one entry
   },
   module: {
     rules: [
-      // HTML loader
       {
         test: /\.html$/,
         loader: 'html-loader',
@@ -70,50 +70,40 @@ module.exports = {
           customAttrAssign: [/\)?\]?=/]
         }
       },
-      // Fonts
       {
         test: /\.(ttf|woff|woff2|eot|svg)$/,
         type: 'asset/resource',
-        generator: { filename: 'static/font/[name][ext]' }
+        generator: { filename: 'static/font/[name][ext]' ,publicPath: '/app/static/font/'}
       },
-      // Images
       {
         test: /\.(jpg|png|webp|gif|otf|ani|ico|cur)$/,
         type: 'asset',
         parser: { dataUrlCondition: { maxSize: 10 * 1024 } },
-        generator: { filename: 'static/img/[name][hash:7][ext]' }
+        generator: { filename: 'static/img/[name][hash:7][ext]' ,publicPath: '/app/static/img/' }
       },
-      // CSS outside bundles
       {
         exclude: bundledCssFiles,
         test: /\.css$/,
         use: ['exports-loader?module.exports.toString()', 'css-loader']
       },
-      // CSS inside bundles
       {
         include: bundledCssFiles,
         test: /\.css$/,
         use: ['style-loader', 'css-loader']
       },
-      // SCSS / SASS
       {
         include: bundledCssFiles,
         test: /\.s[ac]ss$/i,
         use: ['style-loader', 'css-loader', 'sass-loader']
       },
-      // ✅ TypeScript loader
       {
         test: /\.ts$/,
-        use: [
-          {
-            loader: 'ts-loader',
-            options: { transpileOnly: true }
-          }
-        ],
+        use: [{ loader: 'ts-loader', options: { transpileOnly: true } }],
         exclude: /node_modules/
       }
     ]
   },
+
   plugins: [
     new DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
@@ -121,9 +111,8 @@ module.exports = {
     new IgnorePlugin({ resourceRegExp: /^\.\/locale$/, contextRegExp: /moment$/ }),
     new CopyWebpackPlugin({
       patterns: [
-        { from: 'src/assets', to: 'assets', globOptions: { dot: true } },
-        { from: 'src/touch-icon-iphone.png', to: '', globOptions: { dot: true } }
-        // { from: 'src/static/vendor', to: 'static/vendor', globOptions: { dot: true } }
+        // { from: 'src/assets', to: '../', globOptions: { dot: true , ignore: ['**/.gitkeep', '**/.DS_Store', '**/Thumbs.db']} },
+        { from: 'src/touch-icon-iphone.png', to: '../', globOptions: { dot: true } }
       ]
     })
   ],
