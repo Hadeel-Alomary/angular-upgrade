@@ -35,7 +35,7 @@ const getDevelopmentConfig = (env) => {
       // HTML template
       new HtmlWebpackPlugin({
         template: htmlWebpackPluginTemplate,
-        filename: 'index.ejs',
+        "filename": "./index.html",
         hash: false,
         inject: true,
         compile: true,
@@ -77,7 +77,7 @@ const getDevelopmentConfig = (env) => {
       new ReplaceInFileWebpackPlugin([
         {
           dir: getOutputFolder(env, true),
-          files: ['index.ejs'],
+          files: ['index.html'],
           rules: [
             {
               search: 'scripts.bundle.js',
@@ -106,6 +106,5 @@ const getDevelopmentConfig = (env) => {
 };
 
 module.exports = (env) => {
-  const buildEnv = env || { locale: 'ar', build_element: false };
-  return getDevelopmentConfig(buildEnv);
+  return getDevelopmentConfig(env);
 };
