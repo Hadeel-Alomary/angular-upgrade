@@ -18,7 +18,7 @@ const getDevelopmentConfig = (env) => {
     devtool: 'eval',
     output: {
       path: getOutputFolder(env, true),
-      publicPath: getPublicPath(env),
+      publicPath: './',
       filename: '[name].bundle.js',
       chunkFilename: '[id].chunk.js',
       crossOriginLoading: false
