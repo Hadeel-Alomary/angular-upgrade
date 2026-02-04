@@ -2,9 +2,9 @@ import { Component, signal, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-root',
+  standalone: true,   // must be true in Angular 21
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  encapsulation: ViewEncapsulation.None
 })
 export class AppComponent {
   protected readonly title = signal('angular-upgrade');
