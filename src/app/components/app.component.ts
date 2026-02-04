@@ -7,5 +7,9 @@ import { Component, signal, ViewEncapsulation } from '@angular/core';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  protected readonly title = signal('angular-upgrade');
+  protected readonly title;
+
+  constructor() {
+    this.title = signal('angular-upgrade');
+  }
 }

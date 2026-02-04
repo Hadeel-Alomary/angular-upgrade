@@ -11,7 +11,20 @@
     "dist_ar": "webpack --progress --config ./webpack.prod.js --env locale=ar --mode production",
     "lint": "ng lint"
   },
+  "prettier": {
+    "printWidth": 100,
+    "singleQuote": true,
+    "overrides": [
+      {
+        "files": "*.html",
+        "options": {
+          "parser": "angular"
+        }
+      }
+    ]
+  },
   "private": true,
+  "packageManager": "npm@10.8.2",
   "dependencies": {
     "@angular-eslint/builder": "^21.1.0",
     "@angular-eslint/eslint-plugin": "^21.1.0",
