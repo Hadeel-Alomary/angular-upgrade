@@ -4,6 +4,7 @@
   "compileOnSave": false,
   "preserveWhitespaces": false,
   "compilerOptions": {
+    "moduleResolution": "bundler",
     "declaration": false,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
@@ -11,12 +12,12 @@
     "removeComments": true,
     "sourceMap": true,
     "target": "ES2022",
-    "module": "preserve",
+    "module": "ES2022",
     "typeRoots": [
       "./src/typings"
     ],
     "paths": {
-      "@angular/*": ["../node_modules/@angular/*"]
+      "@angular/*": ["./node_modules/@angular/*"]
     },
     "types": [
       "node",
@@ -41,7 +42,7 @@
       "jsbn",
       "jsencrypt"
     ],
-    "noImplicitAny": true,
+    "noImplicitAny": true
 
     // MA never drop the below flag and replace it with index signatures. Index signatures causes type to be lost.
 //    "suppressImplicitAnyIndexErrors": true,
